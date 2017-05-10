@@ -1,28 +1,43 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <title>Fruit and Veggies</title>
-        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" rel="stylesheet">
-        <link rel="stylesheet" href="css/style.css">
+<html ng-app="MyApp" ng-controller="Main">
 
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.8/angular.min.js"></script>
-        <script src="js/fruits_and_veggies_test.js"></script>
-        <script src="js/app.js"></script>
-    </head>
-    <body>
-        <div class="container">
-            <h1>Fruit and Veggies</h1>
-            <div class="row">
-                <div class="col-sm-4">
-                    col 1
+<head>
+    <title>Fruit and Veggies</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.8/angular.min.js"></script>
+    <script src="js/fruits_and_veggies.js"></script>
+    <script src="js/app.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Fruit and Veggies</h1>
+        <div class="row">
+            <div class="col-sm-4">
+                col 1
+                <div ng-class="{'wrong': checkFruit()}" ng-repeat="produce in fruits track by $index" class="well text-center">
+                    <button ng-click='moveRightMiddle(produce)' class="btn btn-primary pull-right ">&#8594;</button>
+                    <span>{{ produce }}</span>
                 </div>
-                <div class="col-sm-4">
-                    col 2
+            </div>
+            <div class="col-sm-4">
+                col 2
+                <div ng-repeat="produce in produceList track by $index" class=" well text-center ">
+                    <button ng-click='moveLeft(produce)' class="btn btn-primary pull-left ">&#8592;</button>
+                    <span> {{ produce }} </span>
+                    <button ng-click='moveRight(produce)' class="btn btn-primary pull-right ">&#8594;</button>
                 </div>
-                <div class="col-sm-4">
-                    col 3
+            </div>
+            <div class="col-sm-4 ">
+                col 3
+                <div ng-repeat="produce in vegetables track by $index" class="well text-center">
+                    <button ng-click='moveLeftMiddle(produce)' class="btn btn-primary pull-left ">&#8592;</button>
+                    <span>{{ produce }}</span>
                 </div>
             </div>
         </div>
-    </body>
+    </div>
+</body>
+
 </html>
